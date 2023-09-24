@@ -1,0 +1,99 @@
+{
+    "local": {
+        "type": "directory",
+        "path": "local",
+        "tamano": 4,
+        "content": {
+            "Archivo.txt": {
+                "type": "file",
+                "path": "local",
+                "tamano": 10,
+                "content": "Hola mundo"
+            },
+            "Videos": {
+                "type": "directory",
+                "path": "local/Videos",
+                "content": {
+                    "Archivo.txt": {
+                        "type": "file",
+                        "path": "local/Videos",
+                        "content": "Hola mundo"
+                    },
+                    "NotasImagenes.txt": {
+                        "type": "file",
+                        "path": "local/Videos",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    }
+                }
+            },
+            "Archivo4.txt": {
+                "type": "file",
+                "path": "local",
+                "tamano": 10,
+                "content": "Hola mundo"
+            },
+            "Archivo2.txt": {
+                "type": "file",
+                "path": "local",
+                "tamano": 10,
+                "content": "Hola mundo"
+            },
+            "Documentos": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "local/Documentos",
+                "content": {
+                    "Archivo4.txt": {
+                        "type": "file",
+                        "path": "local/Documentos",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    },
+                    "Notas.txt": {
+                        "type": "file",
+                        "path": "local/Documentos",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    },
+                    "Archivo2.txt": {
+                        "type": "file",
+                        "path": "local/Documentos",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    },
+                    "Carros": {
+                        "type": "directory",
+                        "tamano": 0,
+                        "path": "local/Documentos/Carros",
+                        "content": {
+                            "Archivo.txt": {
+                                "type": "file",
+                                "path": "local/Documentos/Carros",
+                                "tamano": 10,
+                                "content": "Hola mundo"
+                            },
+                            "Imagenes": {
+                                "type": "directory",
+                                "tamano": 0,
+                                "path": "local/Documentos/Carros/Imagenes",
+                                "content": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "compartido": {
+        "type": "directory",
+        "path": "compartido",
+        "tamano": 10,
+        "content": {}
+    },
+    "User": {
+        "type": "none",
+        "path": "j",
+        "capacidad": -340
+    }
+}

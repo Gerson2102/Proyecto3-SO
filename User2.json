@@ -1,0 +1,43 @@
+{
+    "local": {
+        "type": "directory",
+        "path": "local",
+        "tamano": 4,
+        "content": {
+            "Archivo2.txt": {
+                "type": "file",
+                "path": "local",
+                "tamano": 10,
+                "content": "Hola mundo"
+            },
+            "Documentos": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "local/Documentos",
+                "content": {}
+            },
+            "Videos": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "local/Videos",
+                "content": {}
+            },
+            "Archivo4.txt": {
+                "type": "file",
+                "path": "local",
+                "tamano": 10,
+                "content": "Hola mundo"
+            }
+        }
+    },
+    "compartido": {
+        "type": "directory",
+        "path": "compartido",
+        "tamano": 10,
+        "content": {}
+    },
+    "User": {
+        "type": "none",
+        "capacidad": -668
+    }
+}

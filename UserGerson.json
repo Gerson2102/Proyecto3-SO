@@ -1,0 +1,103 @@
+{
+    "local": {
+        "type": "directory",
+        "path": "local",
+        "tamano": 4,
+        "content": {
+            "Videos": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "local/Videos",
+                "content": {
+                    "Archivo4.txt": {
+                        "type": "file",
+                        "path": "local/Videos",
+                        "current-date": "2023-06-18",
+                        "modified-date": "2023-06-18",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    },
+                    "Notas": {
+                        "type": "directory",
+                        "tamano": 0,
+                        "path": "local/Videos/Notas",
+                        "content": {
+                            "Archivo2.txt": {
+                                "type": "file",
+                                "path": "local/Videos/Notas",
+                                "current-date": "2023-06-18",
+                                "modified-date": "2023-06-18",
+                                "tamano": 19,
+                                "content": "Contenido Modifcado"
+                            },
+                            "Josue.txt": {
+                                "type": "file",
+                                "path": "local/Videos/Notas",
+                                "current-date": "2023-06-18",
+                                "modified-date": "2023-06-18",
+                                "tamano": 12,
+                                "content": "Hola mundo\n\n"
+                            }
+                        }
+                    }
+                }
+            },
+            "Prueba2": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "local/Prueba2",
+                "content": {
+                    "ArchivoPX2.txt": {
+                        "type": "file",
+                        "path": "local/Prueba2",
+                        "current-date": "2023-06-18",
+                        "modified-date": "2023-06-18",
+                        "tamano": 19,
+                        "content": "Esta es la prueba 2"
+                    }
+                }
+            }
+        }
+    },
+    "compartido": {
+        "type": "directory",
+        "path": "compartido",
+        "tamano": 10,
+        "content": {
+            "Videos": {
+                "type": "directory",
+                "tamano": 0,
+                "path": "compartido/Videos",
+                "content": {
+                    "Josue.txt": {
+                        "type": "file",
+                        "path": "compartido/Videos",
+                        "current-date": "2023-06-16",
+                        "modified-date": "2023-06-16",
+                        "tamano": 10,
+                        "content": "Hola mundo"
+                    },
+                    "PruebaPR3": {
+                        "type": "directory",
+                        "tamano": 0,
+                        "path": "compartido/Videos/PruebaPR3",
+                        "content": {
+                            "ArchivoP1.txt": {
+                                "type": "file",
+                                "path": "compartido/Videos/PruebaPR3",
+                                "current-date": "2023-06-17",
+                                "modified-date": "2023-06-17",
+                                "tamano": 19,
+                                "content": "Esta es la prueba 1"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "User": {
+        "type": "none",
+        "capacidad": 80
+    }
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File System</title>
+    <style>
+      .directory {
+        margin-left: 20px;
+      }
+
+      .file {
+        margin-left: 40px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      var content = "{{ content }}"; // Obtener la variable content desde el contexto de renderización
+      if (content != "") {
+        alert("Contenido: " + content);
+      }
+    </script>
+    <script>
+      var properties = "{{ propiedades }}"; // Obtener la variable propiedades desde el contexto de renderización
+      if (properties != "") {
+        alert("Propiedades: " + properties);
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function mostrarOpcionesDirectorio(nombre, path) {
+        var opciones = {
+          "Crear archivo": function () {
+            alert("HOLAAAA:" + path);
+            document.getElementById("nombre-input").style.display = "block";
+            document.getElementById("contenido-input").style.display = "block";
+            document.getElementById("Boton-crear-archivo").style.display =
+              "block";
+
+            document.getElementById("ruta-input").value = path;
+          },
+          "Crear Directorio": function () {
+            document.getElementById("nombre-directorio-input").style.display =
+              "block";
+            document.getElementById("Boton-crear-directorio").style.display =
+              "block";
+
+            document.getElementById("ruta-input").value = path;
+
+            // Lógica para la acción "seleccionar"
+          },
+          "Mover Archivo": function () {
+            // Esto lo añadir despues de enviarle el proyecto a Gerson
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+            document.getElementById("Boton-mover-archivo").style.display =
+              "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = nombre;
+          },
+          "Mover Directorio": function () {
+            // Esto lo añadir despues de enviarle el proyecto a Gerson
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+            document.getElementById("Boton-mover-archivo").style.display =
+              "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = "COMANDO-A|B";
+          },
+          "Delete Normal": function () {
+            document.getElementById("BotonEliminarN").style.display = "Block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = nombre;
+          },
+
+          "Delete Directorio": function () {
+            document.getElementById("BotonEliminarN").style.display = "Block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = "COMANDO-A|B";
+          },
+          "Compartir Archivo": function () {
+            document.getElementById("Archivo").style.display = "block";
+            document.getElementById("Usuario-Archivo-Compartir").style.display =
+              "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = nombre;
+          },
+          Propiedades: function () {
+            document.getElementById("boton-propiedades").style.display =
+              "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("propiedades").value = nombre;
+          },
+          "Modificar archivo": function () {
+            document.getElementById("modificar-input").style.display = "block";
+            document.getElementById("boton-modificar").style.display = "block";
+            document.getElementById("archivo-modificar").value = nombre;
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("modificar-input").value = new_content;
+          },
+          "Mostrar contenido": function () {
+            document.getElementById("boton-mostrar-contenido").style.display =
+              "block";
+            document.getElementById("archivo-mostrar").value = nombre;
+            document.getElementById("ruta-input").value = path;
+          },
+          Load: function () {
+            document.getElementById("ruta-real").style.display = "block";
+            document.getElementById("ruta-drive").style.display = "block";
+            document.getElementById("botonRV").style.display = "block";
+          },
+          "Load Directorio": function () {
+            document.getElementById("ruta-real").style.display = "block";
+            document.getElementById("ruta-drive").style.display = "block";
+            document.getElementById("botonRVD").style.display = "block";
+          },
+          download: function () {
+            document.getElementById("botonDownload").style.display = "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("archivo-mostrar").value = nombre;
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+          },
+          "download directorio": function () {
+            document.getElementById("botonDownloadD").style.display = "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("archivo-mostrar").value = nombre;
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+          },
+          vv: function () {
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+            document.getElementById("botonVV").style.display = "block";
+            //document.getElementById("Boton-mover-archivo").style.display= "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = nombre;
+          },
+          vvDirectorio: function () {
+            document.getElementById("Archivo-N-Ruta").style.display = "block";
+            document.getElementById("botonVV").style.display = "block";
+            //document.getElementById("Boton-mover-archivo").style.display= "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = "COMANDO-A|B";
+          },
+          "Compartir directorio": function () {
+            // Usuario a compartir
+            document.getElementById("botonCompartirDirec").style.display =
+              "block";
+            document.getElementById("Usuario-Archivo-Compartir").style.display =
+              "block";
+            document.getElementById("ruta-input").value = path;
+            document.getElementById("nombreMov").value = nombre;
+          },
+          "Eliminar Varios Ar": function () {
+            document.getElementById("boton-eliminar-AD").style.display =
+              "block";
+            document.getElementById("ruta-input-AD").style.display = "block";
+            document.getElementById("ruta-input-AD").value = path;
+          },
+          "Eliminar Varios Dir": function () {
+            document.getElementById("boton-eliminar-D").style.display = "block";
+            document.getElementById("ruta-input-AD").style.display = "block";
+            document.getElementById("ruta-input-AD").value = path;
+          },
+        };
+
+        var seleccion = prompt(
+          "Selecciona una opción para el archivo: " + nombre,
+          Object.keys(opciones).join(", ")
+        );
+
+        if (seleccion && opciones[seleccion]) {
+          opciones[seleccion]();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form action="/Main/" method="post">
+      {% csrf_token %}
+      <h1>File System</h1>
+      <ul>
+        {{ data|safe }}
+      </ul>
+      <div id="contenedor-formulario">
+        <input type="hidden" name="ruta" id="ruta-input" value="" />
+
+        <input type="hidden" name="NombreMovAr" id="nombreMov" value="" />
+
+        <input
+          type="text"
+          name="nombre"
+          id="nombre-input"
+          value=""
+          placeholder="Nombre archivo"
+        />
+        <input
+          type="text"
+          name="nombre-directorio"
+          id="nombre-directorio-input"
+          value=""
+          placeholder="Nombre Directorio"
+        />
+        <input
+          type="text"
+          name="contenido"
+          id="contenido-input"
+          value=""
+          placeholder="Contenido archivo"
+        />
+        <input
+          type="text"
+          name="ArchivoNRuta"
+          id="Archivo-N-Ruta"
+          value=""
+          placeholder="Nueva ruta"
+        />
+        <input
+          type="text"
+          name="UsuarioArchivoCompartir"
+          id="Usuario-Archivo-Compartir"
+          value=""
+          placeholder="Nombre del Usuario"
+        />
+        <input
+          type="hidden"
+          name="nombre-archivo-modificar"
+          id="archivo-modificar"
+          value=""
+        />
+        <input
+          type="hidden"
+          name="nombre-archivo-mostrar"
+          id="archivo-mostrar"
+          value=""
+        />
+        <input
+          type="text"
+          name="input-modificar-contenido"
+          id="modificar-input"
+          placeholder="Nuevo contenido"
+          value=""
+        />
+
+        <input
+          type="text"
+          name="input-ruta-real"
+          id="ruta-real"
+          placeholder="Ruta real"
+          value=""
+        />
+        <input
+          type="text"
+          name="input-ruta-drive"
+          id="ruta-drive"
+          placeholder="Ruta Drive"
+          value=""
+        />
+        <input
+          type="text"
+          name="input-ruta-eliminar-AD"
+          id="ruta-input-AD"
+          placeholder="Ruta"
+          value=""
+        />
+
+        <input
+          type="hidden"
+          name="nombre-propiedades"
+          id="propiedades"
+          value=""
+        />
+        <button type="submit" id="Boton-crear-archivo" name="BotonArchivo">
+          Anadir Archivo
+        </button>
+        <button type="submit" id="Boton-mover-archivo" name="BotonMoverArchivo">
+          Mover Archivo
+        </button>
+        <button
+          type="submit"
+          id="Boton-crear-directorio"
+          name="BotonDirectorio"
+        >
+          Anadir Directorio
+        </button>
+        <button type="submit" id="BotonCargar" name="Boton-Cargar">
+          Cargar
+        </button>
+        <button type="submit" id="BotonEliminarN" name="Boton-EliminarN">
+          Eliminar
+        </button>
+        <button type="submit" id="Archivo" name="archivo">Compartir</button>
+
+        <button type="submit" id="boton-propiedades" name="boton-props">
+          Propiedades
+        </button>
+        <button type="submit" id="boton-modificar" name="boton-modify">
+          Modificar
+        </button>
+        <button
+          type="submit"
+          id="boton-mostrar-contenido"
+          name="boton-contenido"
+        >
+          Mostrar contenido
+        </button>
+        <button type="submit" id="botonDownload" name="boton-Download">
+          Download
+        </button>
+        <button type="submit" id="botonDownloadD" name="boton-DownloadD">
+          Download
+        </button>
+        <button type="submit" id="botonVV" name="boton-VV">Copiar</button>
+        <button type="submit" id="botonRV" name="boton-RV">Copiar</button>
+        <button type="submit" id="botonRVD" name="boton-RVD">Copiar</button>
+        <button
+          type="submit"
+          id="botonCompartirDirec"
+          name="boton-compartir-direc"
+        >
+          Compartir
+        </button>
+        <button type="submit" id="boton-eliminar-AD" name="boton-eliminar">
+          Eliminar
+        </button>
+        <button type="submit" id="boton-eliminar-D" name="boton-eliminar-Dir">
+          Eliminar
+        </button>
+      </div>
+
+      <script>
+        document.getElementById("ruta-input").style.display = "none";
+        document.getElementById("nombre-input").style.display = "none";
+        document.getElementById("contenido-input").style.display = "none";
+        document.getElementById("Archivo-N-Ruta").style.display = "none";
+        document.getElementById("Usuario-Archivo-Compartir").style.display =
+          "none";
+        document.getElementById("nombre-directorio-input").style.display =
+          "none";
+
+        document.getElementById("ruta-real").style.display = "none";
+        document.getElementById("ruta-drive").style.display = "none";
+
+        document.getElementById("Boton-crear-archivo").style.display = "none";
+        document.getElementById("Boton-crear-directorio").style.display =
+          "none";
+        document.getElementById("Boton-mover-archivo").style.display = "none";
+        document.getElementById("BotonEliminarN").style.display = "none";
+
+        document.getElementById("boton-propiedades").style.display = "none";
+        document.getElementById("boton-modificar").style.display = "none";
+        document.getElementById("boton-mostrar-contenido").style.display =
+          "none";
+
+        document.getElementById("modificar-input").style.display = "none";
+        document.getElementById("archivo-modificar").style.display = "none";
+        document.getElementById("archivo-mostrar").style.display = "none";
+        document.getElementById("botonDownload").style.display = "none";
+        document.getElementById("botonDownloadD").style.display = "none";
+        document.getElementById("botonVV").style.display = "none";
+        document.getElementById("botonRV").style.display = "none";
+        document.getElementById("botonRVD").style.display = "none";
+        document.getElementById("botonCompartirDirec").style.display = "none";
+        document.getElementById("boton-eliminar-AD").style.display = "none";
+        document.getElementById("boton-eliminar-D").style.display = "none";
+        document.getElementById("ruta-input-AD").style.display = "none";
+        document.getElementById("Archivo").style.display = "none";
+      </script>
+    </form>
+  </body>
+</html>
